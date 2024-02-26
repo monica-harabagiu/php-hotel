@@ -50,6 +50,30 @@
     <title>PHP Hotel</title>
 </head>
 <body>
+
+    <ul>
+        <?php 
+        foreach($hotels as $hotel) {
+            echo "<li>{$hotel['name']} 
+                    <br>
+                    <ul>
+                        <li>
+                            Description: {$hotel['description']}
+                        </li>
+                        <li>
+                            Parking: {$hotel['parking']}
+                        </li>
+                        <li>
+                            Vote: {$hotel['vote']}
+                        </li>
+                        <li>
+                            Distance to center: {$hotel['distance_to_center']}
+                        </li>
+                    </ul>
+                </li>";
+        };
+        ?>
+    </ul>
     
 </body>
 </html>
