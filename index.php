@@ -43,37 +43,42 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Hotel</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
 
-    <ul>
-        <?php 
-        foreach($hotels as $hotel) {
-            echo "<li>{$hotel['name']} 
-                    <br>
-                    <ul>
-                        <li>
-                            Description: {$hotel['description']}
-                        </li>
-                        <li>
-                            Parking: {$hotel['parking']}
-                        </li>
-                        <li>
-                            Vote: {$hotel['vote']}
-                        </li>
-                        <li>
-                            Distance to center: {$hotel['distance_to_center']}
-                        </li>
-                    </ul>
-                </li>";
-        };
-        ?>
-    </ul>
+    <h1 class="text-center mt-5">Hotels</h1>
+
+    <div class="container mt-5">
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Parking</th>
+            <th scope="col">Vote</th>
+            <th scope="col">Distance to center</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($hotels as $hotel): ?>
+                <tr>
+                    <td> <?= $hotel['name'] ?> </td>
+                    <td> <?= $hotel['description'] ?> </td>
+                    <td> <?= $hotel['parking'] ?> </td>
+                    <td> <?= $hotel['vote'] ?> </td>
+                    <td> <?= $hotel['distance_to_center'] ?> </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+        </table>
+    </div>
     
 </body>
 </html>
