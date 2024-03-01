@@ -52,6 +52,18 @@ if ( isset($_GET['parking']) && $_GET['parking'] == '1' ) {
     }
 
     $filteredHotels = $hotelWithParking;
+};
+
+if (isset($_GET['vote']) && $_GET['vote'] !== '' ) {
+    $hotelWithParking = [];
+
+    foreach($filteredHotels as $element){
+        if ($element['vote'] >= $_GET['vote']) {
+            $hotelWithParking[] = $element;
+        }
+    }
+
+    $filteredHotels = $hotelWithParking;
 }
 
 
@@ -72,13 +84,26 @@ if ( isset($_GET['parking']) && $_GET['parking'] == '1' ) {
     <h1 class="text-center mt-5">Hotels</h1>
 
     <div class="container mt-5">
-        <form action="index.php" method="get" class="w-25">
-            <select name="parking" class="form-select" >
-                <option selected <?= isset($_GET['parking']) && $_GET['parking'] == '1' ? '' : 'selected' ?> >Parking</option>
-                <option value="1" <?= isset($_GET['parking']) && $_GET['parking'] == '1' ? 'selected' : '' ?> >Yes</option>
-            </select>
-            <button class="btn btn-primary mt-2" type="submit">Search</button>
-        </form>
+        
+            <form action="index.php" method="get">
+                <div class="row">
+                    <div class="col-4">
+                        <select name="parking" class="form-select" >
+                            <option selected <?= isset($_GET['parking']) && $_GET['parking'] == '1' ? '' : 'selected' ?> >Parking</option>
+                            <option value="1" <?= isset($_GET['parking']) && $_GET['parking'] == '1' ? 'selected' : '' ?> >Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <div>
+                            <input type="number" name="vote" id="vote" min="0" max="5" placeholder="Vote" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+        
     </div>
 
 
